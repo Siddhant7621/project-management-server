@@ -15,7 +15,11 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'https://project-management-delta-weld.vercel.app',
-  'https://project-management-delta-weld.vercel.app/'
+  'https://project-management-delta-weld.vercel.app/',
+  'https://project-management-git-main-siddhant-sharmas-projects-311cbe0e.vercel.app/',
+  'https://project-management-git-main-siddhant-sharmas-projects-311cbe0e.vercel.app',
+  'https://project-management-b8ob44sxm-siddhant-sharmas-projects-311cbe0e.vercel.app/',
+  'https://project-management-b8ob44sxm-siddhant-sharmas-projects-311cbe0e.vercel.app'
 ];
 
 const corsOptions = {
