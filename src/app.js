@@ -14,7 +14,8 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  'https://project-management-delta-weld.vercel.app'
+  'https://project-management-delta-weld.vercel.app',
+  'https://project-management-delta-weld.vercel.app/'
 ];
 
 const corsOptions = {
