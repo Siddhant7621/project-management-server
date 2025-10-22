@@ -11,17 +11,16 @@ dotenv.config();
 const app = express();
 
 // CORS configuration
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'https://project-management-delta-weld.vercel.app'
+];
+
 const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    
-    const allowedOrigins = [
-      'http://localhost:5173',
-      'http://localhost:3000',
-      'https://project-management-delta-weld.vercel.app',
-      'https://project-management-delta-weld.vercel.app/'
-    ];
     
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -39,9 +38,6 @@ const corsOptions = {
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
-
-// Handle preflight requests explicitly
-app.options('*', cors(corsOptions));
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -70,12 +66,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/project_m
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log('CORS enabled for origins:', [
-    'http://localhost:5173',
-    'http://localhost:3000', 
-    'https://project-management-delta-weld.vercel.app'
-  ]);
+  console.log('CORS enabled for origins:', allowedOrigins);
 });
